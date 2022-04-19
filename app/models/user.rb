@@ -23,4 +23,9 @@ class User < ApplicationRecord
     under_limit? && !already_tracked?(ticker_symbol)
     # method used to check the two conditions in which stock cannot be tracked
   end
+
+  def full_name
+    return "#{first_name} #{last_name}" if first_name || last_name
+    "Anonymous"
+  end
 end
