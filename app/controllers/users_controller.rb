@@ -1,10 +1,19 @@
 class UsersController < ApplicationController
   def my_portfolio
+    @user = current_user
+  # when u see an id ofr nil class error, means that the variable isnt defined in
+  # that method, got an error saying @user.id for nil class undefined, so go and
+  # define @user in method to fix
     @tracked_stocks = current_user.stocks
   end
 
   def user_friends
     @friends = current_user.friends
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @tracked_stocks = @user.stocks
   end
 
   def search

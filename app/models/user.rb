@@ -12,7 +12,7 @@ class User < ApplicationRecord
     stock = Stock.findin_db(ticker_symbol)
     # if stock already in database that means its being tracked so return true
     return false unless stock
-    Stock.where(id: stock.id).exists?
+    stocks.where(id: stock.id).exists?
     # check if stock is already in db, if not check if it is already in portfolio
   end
   # these methods are used to check if a stock can be added to portfolio
